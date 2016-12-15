@@ -1,0 +1,7 @@
+# File is managed by Puppet
+<% # NOTE: Order is important, do NOT sort hashes. -%>
+<% @real_redis_options.map do |k,v| -%>
+<%   if ![nil, '', :undef].include?(v) -%>
+<%= k %> <%= v %>
+<%   end -%>
+<% end -%>

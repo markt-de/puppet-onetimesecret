@@ -1,0 +1,52 @@
+{
+  "name": "fraenki-onetimesecret",
+  "version": "1.0.0",
+  "author": "Frank Wall",
+  "summary": "One-Time Secret web application",
+  "license": "BSD-2-Clause",
+  "source": "git://github.com/fraenki/puppet-onetimesecret",
+  "project_page": "https://github.com/fraenki/puppet-onetimesecret",
+  "issues_url": "https://github.com/fraenki/puppet-onetimesecret/issues",
+  "description": "Module for setting up the One-Time Secret web application",
+  "tags": [
+    "onetimesecret",
+    "password",
+    "security"
+  ],
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.0.0 < 5.0.0"
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.0.0 < 5.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04",
+        "16.04"
+      ]
+    },
+    {
+      "operatingsystem": "FreeBSD",
+      "operatingsystemrelease": [
+        "9",
+        "10"
+      ]
+    },
+  ]
+}

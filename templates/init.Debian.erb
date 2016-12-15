@@ -1,0 +1,210 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          <%= scope.lookupvar("onetimesecret::service_name") %>
+# Required-Start:    $remote_fs $syslog $network
+# Required-Stop:     $remote_fs $syslog $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start One-Time Secret at boot time
+# Description:       Controls the One-Time Secret web app.
+### END INIT INFO
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+DESC="One-Time Secret web app"
+NAME='<%= scope.lookupvar("onetimesecret::service_name") %>'
+SCRIPTNAME=/etc/init.d/$NAME
+PIDFILE='<%= scope.lookupvar("onetimesecret::pid_file") %>'
+
+USER='<%= scope.lookupvar("onetimesecret::user") %>'
+GROUP='<%= scope.lookupvar("onetimesecret::group") %>'
+ONETIME_INSTALL_DIR='<%= scope.lookupvar("onetimesecret::symlink_name") %>'
+ONETIME_LOGDIR='<%= scope.lookupvar("onetimesecret::log_dir") %>'
+ONETIME_LOGFILE='<%= scope.lookupvar("onetimesecret::log_file") %>'
+ONETIME_HTTP_PORT=<%= scope.lookupvar("onetimesecret::http_port") %>
+
+BUNDLE=<%= scope.lookupvar("onetimesecret::bundle_exec") %>
+BUNDLE_ARGS="exec thin -e dev -P $PIDFILE -d -l $ONETIME_LOGFILE -R config.ru -p $ONETIME_HTTP_PORT start"
+BUNDLE_EXEC="$BUNDLE $BUNDLE_ARGS"
+
+REDIS=<%= scope.lookupvar("onetimesecret::redis_exec") %>
+REDIS_ARGS="<%= scope.lookupvar("onetimesecret::redis_config_file") %>"
+REDIS_PIDFILE='<%= scope.lookupvar("onetimesecret::redis_pid_file") %>'
+REDIS_EXEC="$REDIS $REDIS_ARGS"
+
+# Exit if the package is not installed
+[ -x "$BUNDLE" ] || exit 0
+[ -x "$REDIS" ] || exit 0
+
+# load environments
+if [ -r /etc/default/locale ]; then
+  . /etc/default/locale
+  export LANG LANGUAGE
+elif [ -r /etc/environment ]; then
+  . /etc/environment
+  export LANG LANGUAGE
+fi
+
+# Read configuration variable file if it is present
+[ -r /etc/default/$NAME ] && . /etc/default/$NAME
+
+# Load the VERBOSE setting and other rcS variables
+. /lib/init/vars.sh
+
+# Define LSB log_* functions.
+# Depend on lsb-base (>= 3.0-6) to ensure that this file is present.
+. /lib/lsb/init-functions
+
+# Make sure we run as root
+if [ `id -u` -ne 0 ]; then
+    echo "The $NAME init script can only be run as root"
+    exit 1
+fi
+
+#
+# Check if a TCP port is already in use
+#
+check_tcp_port() {
+    local service=$1
+    local port=$2
+
+    count=`netstat --listen --numeric-ports | grep \:$port[[:space:]] | grep -c . `
+
+    if [ $count -ne 0 ]; then
+        echo "The selected $service port ($port) seems to be in use by another program "
+        echo "Please select another port to use for $NAME"
+        return 1
+    fi
+}
+
+#
+# Function that starts the daemon/service
+#
+do_start()
+{
+    # Return
+    #   0 if daemon has been started
+    #   1 if daemon was already running
+    #   2 if daemon could not be started
+
+    # Check if daemons are already running
+    is_running || return 1
+
+    # Verify that the port is not already in use
+    check_tcp_port "ots-webapp" "$HTTP_PORT" || return 2
+
+    # PID directory must be present
+    mkdir `dirname $PIDFILE` > /dev/null 2>&1 || true
+    chown ${ONETIME_USER}:${ONETIME_GROUP} `dirname $PIDFILE`
+
+    # Start redis server
+    start-stop-daemon --start --quiet \
+               --pidfile $REDIS_PIDFILE \
+               --chuid $USER:$GROUP \
+               --background \
+               --exec $REDIS -- \
+                 $REDIS_ARGS \
+        || return 2
+
+    # Start ots web app
+    sleep 3
+    start-stop-daemon --start --quiet \
+               --pidfile $PIDFILE \
+               --chuid $USER:$GROUP \
+               --chdir $ONETIME_INSTALL_DIR \
+               --background \
+               --exec $BUNDLE -- \
+                 $BUNDLE_ARGS \
+        || return 2
+}
+
+#
+# Get the status of the daemon processes
+#
+is_running()
+{
+    start-stop-daemon --start --quiet --pidfile $PIDFILE --user $USER --test --exec $BUNDLE -- $BUNDLE_ARGS > /dev/null \
+        || return 1
+    start-stop-daemon --start --quiet --pidfile $REDIS_PIDFILE --user $USER --test --exec $REDIS -- $REDIS_ARGS  > /dev/null \
+        || return 1
+    return 0
+}
+
+#
+# Function that stops the daemon/service
+#
+do_stop()
+{
+    # Return
+    #   0 if daemon has been stopped
+    #   1 if daemon was already stopped
+    #   2 if daemon could not be stopped
+    #   other if a failure occurred
+    is_running && return 1
+
+    # Stop ots web app
+    start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 --pidfile $PIDFILE
+    RETVAL="$?"
+    [ "$RETVAL" = 0 ] && rm -f $PIDFILE
+
+    # Stop redis server
+    start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 --pidfile $REDIS_PIDFILE
+    RETVAL2="$?"
+    [ "$RETVAL2" = 0 ] && rm -f $REDIS_PIDFILE
+
+    if [ "$RETVAL" != 0 -o "$RETVAL2" != 0 ]; then
+      return 2
+    else
+      return 0
+    fi
+}
+
+case "$1" in
+  start)
+    log_daemon_msg "Starting $DESC"
+    do_start
+    case "$?" in
+        0|1) log_end_msg 0 ;;
+        2) log_end_msg 1 ;;
+    esac
+    ;;
+  stop)
+    log_daemon_msg "Stopping $DESC"
+    do_stop
+    case "$?" in
+        0|1) log_end_msg 0 ;;
+        2) log_end_msg 1 ;;
+    esac
+    ;;
+  status)
+    status_of_proc -p $PIDFILE "$NAME" "$DESC" && exit 0 || exit $?
+    ;;
+  restart|force-reload)
+    #
+    # If the "reload" option is implemented then remove the
+    # 'force-reload' alias
+    #
+    log_daemon_msg "Restarting $DESC"
+    do_stop
+    case "$?" in
+      0|1)
+        do_start
+        case "$?" in
+          0) log_end_msg 0 ;;
+          1) log_end_msg 1 ;; # Old process is still running
+          *) log_end_msg 1 ;; # Failed to start
+        esac
+        ;;
+      *)
+        # Failed to stop
+        log_end_msg 1
+        ;;
+    esac
+    ;;
+  *)
+    echo "Usage: $SCRIPTNAME {start|stop|status|restart|force-reload}" >&2
+    exit 3
+    ;;
+esac
+
+exit 0
