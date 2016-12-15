@@ -3,7 +3,7 @@
 1. [Overview](#overview)
 2. [Requirements](#requirements)
 3. [Usage](#usage)
-    * [Beginning with onetimesecret](#beginning-with-onetimesecret)
+    * [Beginning with One-Time Secret](#beginning-with-one-time-secret)
     * [Using Hiera](#using-hiera)
 4. [Reference](#reference)
     * [Syntax](#syntax)
@@ -16,7 +16,7 @@
 
 ## Overview
 
-This is a puppet module for setting up the One-Time Secret web application.
+This is a puppet module for setting up the [One-Time Secret](https://github.com/onetimesecret/onetimesecret) web application.
 It allows for very flexible configuration and is hiera-friendly.
 
 ## Requirements
@@ -27,7 +27,7 @@ It allows for very flexible configuration and is hiera-friendly.
 
 ## Usage
 
-### Beginning with onetimesecret
+### Beginning with One-Time Secret
 
 This example will install packages, setup a minimal configuration and activate the service for you:
 
@@ -87,7 +87,7 @@ You may opt to disable the default configuration and do everything from scratch:
       redis_password      => 'AnotherGoodPassword',
     }
 
-The hashes must contain all options required to run the One-Time Secret web application and the redis server. Otherwise setup may fail or the service will fail to startup.
+The hashes must contain ALL options required to run the One-Time Secret web application and the redis server. Otherwise setup/installation may fail or the service will fail to startup.
 
 ### Using Hiera
 
