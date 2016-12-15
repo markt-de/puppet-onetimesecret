@@ -1,3 +1,7 @@
+# == Class onetimesecret
+#
+# Install, configure and run One-Time Secret
+#
 class onetimesecret (
   # service options
   Boolean $manage_service             = $::onetimesecret::params::manage_service,
@@ -8,7 +12,6 @@ class onetimesecret (
   String $service_ensure              = $::onetimesecret::params::service_ensure,
   String $service_name                = $::onetimesecret::params::service_name,
   String $service_provider            = $::onetimesecret::params::service_provider,
-
   # installation options
   Boolean $manage_package             = $::onetimesecret::params::manage_package,
   Boolean $manage_additional_packages = $::onetimesecret::params::manage_additional_packages,
@@ -19,7 +22,6 @@ class onetimesecret (
   String $install_dir                 = $::onetimesecret::params::install_dir,
   String $symlink_name                = $::onetimesecret::params::symlink_name,
   Boolean $manage_symlink             = $::onetimesecret::params::manage_symlink,
-
   # user options
   Boolean $manage_user                = $::onetimesecret::params::manage_user,
   String $root_group                  = $::onetimesecret::params::root_group,
@@ -27,10 +29,8 @@ class onetimesecret (
   String $group                       = $::onetimesecret::params::group,
   $uid                                = undef,
   String $user                        = $::onetimesecret::params::user,
-
   String $bundle_exec                 = $::onetimesecret::params::bundle_exec,
   String $redis_exec                  = $::onetimesecret::params::redis_exec,
-
   # OTS configuration
   String $host                        = $::fqdn,
   String $domain                      = $::domain,

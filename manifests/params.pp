@@ -13,12 +13,12 @@ class onetimesecret::params {
   $manage_user                = true
   $manage_symlink             = true
   $options                    = {}
-  $package_name               = "${module_name}"
+  $package_name               = $module_name
 
   # service parameters
   $manage_service             = true
   $manage_service_file        = true
-  $service_name               = "${module_name}"
+  $service_name               = $module_name
   $service_enable             = true
   $service_ensure             = 'running'
   $service_provider           = 'init'
@@ -78,7 +78,7 @@ class onetimesecret::params {
     'site' => {
       'host' => 'localhost:7143',
       'domain' => $::domain,
-      'ssl' => 'false',
+      'ssl' => false,
       'secret' => 'CHANGEME',
     },
     'redis' => {
@@ -89,10 +89,10 @@ class onetimesecret::params {
       'mode' => ':smtp',
       'from' => "ots@${::domain}",
       'host' => 'localhost',
-      'port' => '25',
+      'port' => 25,
     },
     'incoming' => {
-      'enabled' => 'false',
+      'enabled' => false,
       'email' => 'example@onetimesecret.com',
       'passphrase' => 'CHANGEME',
       'regex' => '\A[a-zA-Z0-9]{6}\z',
@@ -100,7 +100,7 @@ class onetimesecret::params {
     'locales' => [ 'en', 'es', 'de', 'nl', 'ru' ],
     'unsupported_locales' => [ 'fr', 'pt', 'jp', 'pt' ],
     'stathat' => {
-      'enabled' => 'false',
+      'enabled' => false,
       'apikey' => 'CHANGEME',
       'default_chart' => 'CHANGEME',
     },
@@ -109,18 +109,18 @@ class onetimesecret::params {
       'paid_recipient_text' => '\'Send the secret link via email\'',
     },
     'limits' => {
-      'create_secret' => '250',
-      'create_account' => '10',
-      'update_account' => '10',
-      'email_recipient' => '50',
-      'send_feedback' => '10',
-      'authenticate_session' => '5',
-      'homepage' => '500',
-      'dashboard' => '1000',
-      'failed_passphrase' => '5',
-      'show_metadata' => '1000',
-      'show_secret' => '1000',
-      'burn_secret' => '1000',
+      'create_secret' => 250,
+      'create_account' => 10,
+      'update_account' => 10,
+      'email_recipient' => 50,
+      'send_feedback' => 10,
+      'authenticate_session' => 5,
+      'homepage' => 500,
+      'dashboard' => 1000,
+      'failed_passphrase' => 5,
+      'show_metadata' => 1000,
+      'show_secret' => 1000,
+      'burn_secret' => 1000,
     },
   }
   $redis_default_options = {
@@ -131,9 +131,9 @@ class onetimesecret::params {
     'appendfilename' => 'default.aof',
     'requirepass' => 'CHANGEME',
     'bind' => '127.0.0.1',
-    'port' => '7179',
-    'databases' => '16',
-    'timeout' => '30',
+    'port' => 7179,
+    'databases' => 16,
+    'timeout' => 30,
     'daemonize' => 'yes',
     'loglevel' => 'notice',
     'save' => '157680000 1',
