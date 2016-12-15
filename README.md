@@ -6,13 +6,10 @@
     * [Beginning with One-Time Secret](#beginning-with-one-time-secret)
     * [Using Hiera](#using-hiera)
 4. [Reference](#reference)
-    * [Syntax](#syntax)
     * [Parameters](#parameters)
 5. [Limitations](#limitations)
     * [OS Compatibility](#os-compatibility)
-    * [Template Issues](#template-issues)
 6. [Development](#development)
-7. [Contributors](#contributors)
 
 ## Overview
 
