@@ -26,6 +26,7 @@ class onetimesecret::config {
         'secret' => $::onetimesecret::secret,
       },
       'redis' => {
+        'dir' => $::onetimesecret::data_dir,
         'uri' => $redis_uri,
       },
     }
