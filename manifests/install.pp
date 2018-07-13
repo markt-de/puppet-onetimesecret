@@ -16,31 +16,36 @@ class onetimesecret::install {
 
     $package_name = $onetimesecret::package_name
     $version      = $onetimesecret::version
+    $filename     = "${version}.zip"
 
-    if $onetimesecret::version == 'master' {
-      $filename = "${version}.tar.gz"
+    # Stop puppet from sending an http HEAD request on every run
+    if find_file("${onetimesecret::install_dir}/${filename}") == undef {
+      $fulldownloadurl = "${onetimesecret::download_url}/${filename}"
     }
-    else {
-      $filename = "v${version}.tar.gz"
+    else { $fulldownloadurl = undef }
+
+    file { "${onetimesecret::install_dir}/${filename}":
+      ensure  => file,
+      owner   => 'root',
+      mode    => '0644',
+      group   => $onetimesecret::root_group,
+      source  => $fulldownloadurl,
+      notify  => Exec['unzip'],
+      require => Package[$onetimesecret::additional_packages],
     }
 
-    archive { "${onetimesecret::install_dir}/${filename}":
-      ensure        => present,
-      user          => 'root',
-      group         => $onetimesecret::root_group,
-      source        => "${onetimesecret::download_url}/${filename}",
-      extract_path  => $onetimesecret::install_dir,
-      # Extract files as the user doing the extracting, which is the user
-      # that runs Puppet, usually root
-      extract_flags => '-x --no-same-owner -f',
-      creates       => "${onetimesecret::install_dir}/onetimesecret-${version}",
-      extract       => true,
-      cleanup       => true,
+    exec { 'unzip':
+      command     => "unzip ${onetimesecret::install_dir}/${filename}",
+      cwd         => $onetimesecret::install_dir,
+      creates     => "${onetimesecret::install_dir}/onetimesecret-${version}",
+      user        => 'root',
+      require     => Package[$onetimesecret::additional_packages],
+      refreshonly => true,
     }
 
     file {
       [ $::onetimesecret::config_dir, $::onetimesecret::data_dir,
-        $::onetimesecret::log_dir, $::onetimesecret::pid_dir]:
+      $::onetimesecret::log_dir, $::onetimesecret::pid_dir ]:
         ensure => directory,
         owner  => $onetimesecret::user,
         group  => $onetimesecret::group,
@@ -51,18 +56,15 @@ class onetimesecret::install {
 
       # Install dependencies required to build OTS
       package { $onetimesecret::additional_packages:
-        ensure  => installed,
-        require => Archive["${onetimesecret::install_dir}/${filename}"]
+        ensure  => 'installed',
       }
-
       # Use foreman as process manager
       package {'installforeman':
         ensure   => 'installed',
         name     => 'foreman',
         provider => 'gem',
-        require  => Package[$onetimesecret::additional_packages]
+        require  => Package[$onetimesecret::additional_packages],
       }
-
     }
 
     # Build from source
@@ -71,8 +73,8 @@ class onetimesecret::install {
       command     => "${onetimesecret::bundle_exec} install --deployment --frozen --without=dev",
       user        => 'root',
       refreshonly => true,
-      require     => Archive["${onetimesecret::install_dir}/${filename}"],
-      subscribe   => Archive["${onetimesecret::install_dir}/${filename}"],
+      require     => [File["${onetimesecret::install_dir}/${filename}"], Package[$onetimesecret::additional_packages]],
+      subscribe   => File["${onetimesecret::install_dir}/${filename}"],
     }
 
     # Change file owner
