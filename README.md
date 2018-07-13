@@ -18,7 +18,7 @@ It allows for very flexible configuration and is hiera-friendly.
 
 ## Requirements
 
-* Puppet 4.x
+* Puppet 5.x
 * [puppetlabs/stdlib](https://github.com/puppetlabs/puppetlabs-stdlib)
 * A Reverse-Proxy configuration (as frontend for One-Time Secret)
 
