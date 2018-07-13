@@ -7,7 +7,7 @@
 * Fix issue with /etc/init.d/onetimesecret startup script, where variable reference was incorrectly set to $HTTP_PORT (changed to $ONETIME_HTTP_PORT)
 * Change 'ruby1.9.1' and 'ruby1.9.1-dev' for the metapackages that also have installation candidates for Ubuntu 16 & 18. This adds support for Ubuntu 16 & 18.
 * Change method of class ordering in init.pp
-* Change download URL and version to onetimesecret fork. This was necessary because the Gemfile/Gemfile.lock in the official versions referenced a broken version of the gem (yajl-ruby). See https://github.com/onetimesecret/onetimesecret/issues/81
+* Change download URL and version to onetimesecret fork. This was necessary because the Gemfile/Gemfile.lock in the official versions referenced a broken version of the gem 'yajl-ruby'. See https://github.com/onetimesecret/onetimesecret/issues/81
 * Manifests linted in various places.
 
 ## 1.0.1
