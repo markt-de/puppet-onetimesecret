@@ -18,4 +18,4 @@
 
 # TODO
 
-* Replace init.d scripts with systemd unit files. https://github.com/onetimesecret/onetimesecret/issues/69 would be a good starting point.
+* Replace init.d script with systemd unit files. https://github.com/onetimesecret/onetimesecret/issues/69 would be a good starting point.
