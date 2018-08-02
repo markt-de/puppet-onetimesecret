@@ -53,12 +53,12 @@ class onetimesecret::params {
       $root_group   = 'root'
       $additional_packages = [ 'redis-server', 'build-essential', 'libyaml-dev',
         'libevent-dev', 'zlib1g', 'zlib1g-dev', 'openssl', 'libssl-dev',
-        'libxml2', 'ruby1.9.1', 'ruby1.9.1-dev', 'bundler' ]
+      'libxml2', 'libreadline-gplv2-dev', 'ruby', 'ruby-dev', 'bundler','unzip' ]
       $bundle_exec  = '/usr/bin/bundle'
       $redis_exec   = '/usr/bin/redis-server'
     }
     default: {
-      fail("\"${module_name}\" provides no config directory default value
+    fail("\"${module_name}\" provides no config directory default value
            for \"${::kernel}\"")
     }
   }
@@ -66,8 +66,8 @@ class onetimesecret::params {
   # One-time Secret configuration
   $config_file        = "${config_dir}/config"
   $redis_config_file  = "${config_dir}/redis.conf"
-  $download_url       = 'https://github.com/onetimesecret/onetimesecret/archive'
-  $version            = '0.9.2'
+  $download_url       = 'https://github.com/Jimadine/onetimesecret/archive'
+  $version            = 'master'
   $group              = 'ots'
   $user               = 'ots'
   $symlink_name       = "${install_dir}/${module_name}"

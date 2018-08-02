@@ -51,7 +51,7 @@ class onetimesecret (
   String $redis_password              = 'UNSET',
 ) inherits onetimesecret::params {
 
-  include stdlib
+  include ::stdlib
 
   # Do not permit insecure installations.
   if $secret == 'UNSET' {
@@ -61,9 +61,11 @@ class onetimesecret (
     fail("${::hostname}: Module \"${module_name}\" requires that you change the default value of \"\$redis_password\"")
   }
 
-  class {'onetimesecret::user': }->
-  class {'onetimesecret::install': }->
-  class {'onetimesecret::config': }->
-  class {'onetimesecret::service': }
+  contain ::onetimesecret::user
+  contain ::onetimesecret::install
+  contain ::onetimesecret::config
+  contain ::onetimesecret::service
+  Class['::onetimesecret::user'] -> Class['::onetimesecret::install'] -> Class['::onetimesecret::config']
+  ~> Class['::onetimesecret::service']
 
 }
