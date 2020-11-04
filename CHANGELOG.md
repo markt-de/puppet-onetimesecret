@@ -17,6 +17,7 @@ Afterwards change `$redis_options` to be compatible with your new Redis instance
 
 ### Changed
 * Use module voxpupuli/puppet-redis to manage Redis
+* Re-add module voxpupuli/puppet-archive to download/extract distribution archive
 * Repurpose `$redis_options`, add incompatible options
 * Convert to PDK 1.18.1
 * Convert `params.pp` to module data
@@ -28,6 +29,7 @@ Afterwards change `$redis_options` to be compatible with your new Redis instance
 * Remove support for obsolete Linux init script
 * Remove parameter `$manage_service_file` (superseded by `$manage_service`)
 * Remove parameters `$redis_config_file`, `$redis_config_template`, `$redis_default_options`, `$redis_exec`, `$redis_pid_file`
+* Remove parameter `$package_name` (no packages available)
 
 ## 1.0.2
 

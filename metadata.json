@@ -13,9 +13,14 @@
       "version_requirement": ">= 4.25.0 < 7.0.0"
     },
     {
-      "name": "voxpupuli/redis",
+      "name": "puppet/redis",
       "version_requirement": ">= 6.0.0 < 7.0.0"
+    },
+    {
+      "name": "puppet/archive",
+      "version_requirement": ">= 4.0.0 < 5.0.0"
     }
+
   ],
   "operatingsystem_support": [
     {

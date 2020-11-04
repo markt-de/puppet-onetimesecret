@@ -24,7 +24,7 @@ class onetimesecret (
   Boolean $manage_symlink,
   Boolean $manage_user,
   Hash $options,
-  String $package_name,
+  String $path,
   String $pid_dir,
   String $pid_file,
   Hash $redis_options,

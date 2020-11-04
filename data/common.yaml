@@ -71,7 +71,7 @@ onetimesecret::manage_service: true
 onetimesecret::manage_symlink: true
 onetimesecret::manage_user: true
 onetimesecret::options: {}
-onetimesecret::package_name: "%{module_name}"
+onetimesecret::path: '/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin'
 onetimesecret::pid_dir: '/var/run/onetime'
 onetimesecret::pid_file: "%{lookup('onetimesecret::pid_dir')}/ots.pid"
 onetimesecret::redis_options:

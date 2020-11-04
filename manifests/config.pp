@@ -4,13 +4,6 @@
 #
 class onetimesecret::config {
 
-  Exec {
-    path      => [ '/bin', '/usr/bin', '/usr/local/bin' ],
-    cwd       => '/',
-    tries     => 3,
-    try_sleep => 10,
-  }
-
   # Should we manage the configuration at all?
   if ( $onetimesecret::manage_config == true ) {
 
