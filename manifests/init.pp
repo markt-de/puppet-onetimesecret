@@ -27,12 +27,8 @@ class onetimesecret (
   String $package_name,
   String $pid_dir,
   String $pid_file,
-  String $redis_config_file,
-  Hash $redis_default_options,
-  String $redis_exec,
   Hash $redis_options,
   String $redis_password,
-  String $redis_pid_file,
   String $root_group,
   String $secret,
   String $service_ensure,
@@ -47,13 +43,17 @@ class onetimesecret (
   Optional[Integer] $gid = undef,
   Optional[Integer] $uid = undef,
 ) {
-
   include stdlib
 
   contain onetimesecret::user
   contain onetimesecret::install
   contain onetimesecret::config
+  contain onetimesecret::redis
   contain onetimesecret::service
-  Class['onetimesecret::user'] -> Class['onetimesecret::install'] -> Class['onetimesecret::config']
+
+  Class['onetimesecret::user']
+  -> Class['onetimesecret::install']
+  -> Class['onetimesecret::config']
+  -> Class['onetimesecret::redis']
   ~> Class['onetimesecret::service']
 }

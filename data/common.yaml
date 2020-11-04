@@ -13,7 +13,6 @@ onetimesecret::default_options:
     secret: 'CHANGEME'
   redis:
     uri: '''redis://user:CHANGEME@127.0.0.1:7179/0?timeout=10&thread_safe=false&logging=false'''
-    config: "%{lookup('onetimesecret::redis_config_file')}"
   emailer:
     mode: ':smtp'
     from: "ots@%{facts.networking.domain}"
@@ -67,6 +66,7 @@ onetimesecret::manage_additional_packages: true
 onetimesecret::manage_config: true
 onetimesecret::manage_cron: true
 onetimesecret::manage_package: true
+onetimesecret::manage_redis: true
 onetimesecret::manage_service: true
 onetimesecret::manage_symlink: true
 onetimesecret::manage_user: true
@@ -74,29 +74,16 @@ onetimesecret::options: {}
 onetimesecret::package_name: "%{module_name}"
 onetimesecret::pid_dir: '/var/run/onetime'
 onetimesecret::pid_file: "%{lookup('onetimesecret::pid_dir')}/ots.pid"
-onetimesecret::redis_config_file: "%{lookup('onetimesecret::config_dir')}/redis.conf"
-onetimesecret::redis_config_template: "%{module_name}/redis.conf.erb"
-onetimesecret::redis_default_options:
-  pidfile: "%{lookup('onetimesecret::redis_pid_file')}"
-  logfile: "%{lookup('onetimesecret::redis_log_file')}"
-  dir: "%{lookup('onetimesecret::data_dir')}"
-  dbfilename: 'default.rdb'
-  appendfilename: 'default.aof'
-  requirepass: 'CHANGEME'
-  bind: '127.0.0.1'
-  port: 7179
-  databases: 16
-  timeout: 30
-  daemonize: 'yes'
-  loglevel: 'notice'
-  save: '157680000 1'
-  rdbcompression: 'yes'
-  appendonly: 'yes'
+onetimesecret::redis_options:
+  activerehashing: true
   appendfsync: 'everysec'
-onetimesecret::redis_exec: '/usr/bin/redis-server'
-onetimesecret::redis_log_file: "%{lookup('onetimesecret::log_dir')}/redis.log"
-onetimesecret::redis_options: {}
-onetimesecret::redis_pid_file: "%{lookup('onetimesecret::pid_dir')}/redis.pid"
+  appendonly: false
+  bind: '127.0.0.1'
+  maxmemory: '1gb'
+  maxmemory_policy: 'allkeys-lru'
+  port: 7179
+  save_db_to_disk: true
+  timeout: 30
 onetimesecret::root_group: 'root'
 onetimesecret::service_enable: true
 onetimesecret::service_ensure: 'running'

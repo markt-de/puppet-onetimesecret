@@ -5,19 +5,28 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+This release introduces several breaking changes. Redis is no longer
+maintained by this module, as a result, the Redis configuration is not
+compatible with older releases. You should migrate your Redis instance
+manually to voxpupuli/puppet-redis (dump+restore is recommended).
+Afterwards change `$redis_options` to be compatible with your new Redis instance.
 
 ### Added
 * Use systemd to manage the service on Linux
+* Add new parameter `$manage_redis`
 
 ### Changed
+* Use module voxpupuli/puppet-redis to manage Redis
+* Repurpose `$redis_options`, add incompatible options
 * Convert to PDK 1.18.1
 * Convert `params.pp` to module data
 
 ### Fixed
 
 ### Removed
-* Remove obsolete Linux init script
-* Remove parameter `$manage_service_file`
+* Remove support for obsolete Linux init script
+* Remove parameter `$manage_service_file` (superseded by `$manage_service`)
+* Remove parameters `$redis_config_file`, `$redis_config_template`, `$redis_default_options`, `$redis_exec`, `$redis_pid_file`
 
 ## 1.0.2
 
