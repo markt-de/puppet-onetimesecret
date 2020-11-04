@@ -7,22 +7,10 @@
   "source": "git://github.com/fraenki/puppet-onetimesecret",
   "project_page": "https://github.com/fraenki/puppet-onetimesecret",
   "issues_url": "https://github.com/fraenki/puppet-onetimesecret/issues",
-  "description": "Module for setting up the One-Time Secret web application",
-  "tags": [
-    "onetimesecret",
-    "password",
-    "security"
-  ],
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
       "version_requirement": ">= 4.0.0 < 5.0.0"
-    }
-  ],
-  "requirements": [
-    {
-      "name": "puppet",
-      "version_requirement": ">= 5.0.0"
     }
   ],
   "operatingsystem_support": [
@@ -48,5 +36,20 @@
         "11"
       ]
     }
-  ]
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 5.0.0"
+    }
+  ],
+  "description": "Module for setting up the One-Time Secret web application",
+  "tags": [
+    "onetimesecret",
+    "password",
+    "security"
+  ],
+  "pdk-version": "1.18.1",
+  "template-url": "pdk-default#1.18.1",
+  "template-ref": "tags/1.18.1-0-g3d2e75c"
 }
