@@ -15,25 +15,38 @@
   ],
   "operatingsystem_support": [
     {
-      "operatingsystem": "Debian",
+      "operatingsystem": "CentOS",
       "operatingsystemrelease": [
         "7",
         "8"
       ]
     },
     {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "9",
+        "10"
+      ]
+    },
+    {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "14.04",
-        "16.04",
-        "18.04"
+        "18.04",
+        "20.04"
       ]
     },
     {
       "operatingsystem": "FreeBSD",
       "operatingsystemrelease": [
-        "10",
-        "11"
+        "11",
+        "12"
       ]
     }
   ],
