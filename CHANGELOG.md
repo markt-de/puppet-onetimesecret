@@ -20,6 +20,7 @@ Afterwards change `$redis_options` to be compatible with your new Redis instance
 * Repurpose `$redis_options`, add incompatible options
 * Convert to PDK 1.18.1
 * Convert `params.pp` to module data
+* Migrate ERB templates to EPP
 
 ### Fixed
 

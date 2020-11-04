@@ -1,0 +1,23 @@
+# File is managed by Puppet
+<%# NOTE: Order is important, do NOT sort hashes. -%>
+<% $real_options.map |$k,$v| { -%>
+<%   if ($v =~ Hash) {-%>
+:<%=   $k %>:
+<%     $v.map |$ki, $vi| { -%>
+<%       if ($vi =~ Hash) { -%>
+  :<%=     $ki %>:
+<%       } elsif ($vi =~ Array) { -%>
+<%         $vi.each |$vii| { -%>
+    - <%= $vii %>
+<%         } -%>
+<%       } elsif ($vi != undef and $vi != '') { -%>
+    :<%= $ki %>: <%= $vi %>
+<%       } -%>
+<%     } -%>
+<%   } elsif ($v =~ Array) { -%>
+:<%=   $k %>:
+<%     $v.each |$vi| { -%>
+    - <%= $vi %>
+<%     } -%>
+<%   } -%>
+<% } -%>
