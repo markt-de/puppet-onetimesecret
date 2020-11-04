@@ -7,6 +7,15 @@ class onetimesecret::install {
   # Should we manage the package/archive installation?
   if ( $onetimesecret::manage_package == true ) {
 
+    # Construct download URL.
+    $version = $onetimesecret::version
+    $filename = "${version}.tar.gz"
+    $source_url = "${onetimesecret::download_url}/${filename}"
+
+    # Construct target paths and filenames.
+    $archive_target = "${onetimesecret::install_dir}/${filename}"
+    $install_target = "${onetimesecret::install_dir}/onetimesecret-${version}"
+
     # We won't be able to build the app without these packages.
     if ( $onetimesecret::manage_additional_packages == true ) {
 
@@ -27,15 +36,6 @@ class onetimesecret::install {
 
     }
 
-    # Construct download URL.
-    $version = $onetimesecret::version
-    $filename = "${version}.tar.gz"
-    $source_url = "${onetimesecret::download_url}/${filename}"
-
-    # Construct target paths and filenames.
-    $archive_target = "${onetimesecret::install_dir}/${filename}"
-    $install_target = "${onetimesecret::install_dir}/onetimesecret-${version}"
-
     # Download and extract the distribution archive.
     archive { $archive_target:
       ensure        => present,
@@ -49,7 +49,7 @@ class onetimesecret::install {
       extract_flags => '-x --no-same-owner -f',
       creates       => $install_target,
       extract       => true,
-      cleanup       => false,
+      cleanup       => true,
     }
 
     # Create required runtime directories.
