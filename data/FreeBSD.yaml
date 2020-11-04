@@ -1,0 +1,9 @@
+---
+# TODO
+onetimesecret::additional_packages: []
+onetimesecret::bundle_exec: '/usr/local/bin/bundle'
+onetimesecret::config_dir: '/usr/local/etc/onetime'
+onetimesecret::data_dir: "%{lookup('onetimesecret::config_dir')}/data"
+onetimesecret::install_dir: '/usr/local'
+onetimesecret::redis_exec: '/usr/local/bin/redis-server'
+onetimesecret::root_group: 'wheel'

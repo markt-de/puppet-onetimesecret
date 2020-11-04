@@ -1,0 +1,16 @@
+---
+onetimesecret::additional_packages:
+  - 'build-essential'
+  - 'bundler'
+  - 'libevent-dev'
+  - 'libreadline-gplv2-dev'
+  - 'libssl-dev'
+  - 'libxml2'
+  - 'libyaml-dev'
+  - 'openssl'
+  - 'redis-server'
+  - 'ruby'
+  - 'ruby-dev'
+  - 'unzip'
+  - 'zlib1g'
+  - 'zlib1g-dev'

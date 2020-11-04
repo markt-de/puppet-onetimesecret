@@ -22,7 +22,5 @@ class onetimesecret::user {
       system     => true,
       uid        => $onetimesecret::uid,
     }
-
   }
-
 }

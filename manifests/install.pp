@@ -12,7 +12,7 @@ class onetimesecret::install {
   }
 
   # Should we manage the package/archive installation?
-  if ( $::onetimesecret::manage_package == true ) {
+  if ( $onetimesecret::manage_package == true ) {
 
     $package_name = $onetimesecret::package_name
     $version      = $onetimesecret::version
@@ -44,15 +44,15 @@ class onetimesecret::install {
     }
 
     file {
-      [ $::onetimesecret::config_dir, $::onetimesecret::data_dir,
-      $::onetimesecret::log_dir, $::onetimesecret::pid_dir ]:
+      [ $onetimesecret::config_dir, $onetimesecret::data_dir,
+      $onetimesecret::log_dir, $onetimesecret::pid_dir ]:
         ensure => directory,
         owner  => $onetimesecret::user,
         group  => $onetimesecret::group,
     }
 
     # We won't be able to build the app without these packages.
-    if ( $::onetimesecret::manage_additional_packages == true ) {
+    if ( $onetimesecret::manage_additional_packages == true ) {
 
       # Install dependencies required to build OTS
       package { $onetimesecret::additional_packages:
@@ -108,5 +108,4 @@ class onetimesecret::install {
     }
 
   }
-
 }

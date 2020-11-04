@@ -1,0 +1,11 @@
+---
+onetimesecret::additional_packages:
+  - 'gcc'
+  - 'gcc-c++'
+  - 'libevent-devel'
+  - 'libtool'
+  - 'libyaml-devel'
+  - 'make'
+  - 'openssl-devel'
+  - 'readline-devel'
+  - 'zlib-devel'

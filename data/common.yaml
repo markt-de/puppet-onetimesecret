@@ -1,1 +1,109 @@
---- {}
+---
+onetimesecret::bundle_exec: '/usr/bin/bundle'
+onetimesecret::config_dir: '/etc/onetime'
+onetimesecret::config_file: "%{lookup('onetimesecret::config_dir')}/config"
+onetimesecret::config_mode: '0640'
+onetimesecret::config_template: "%{module_name}/config.erb"
+onetimesecret::data_dir: "%{lookup('onetimesecret::config_dir')}/data"
+onetimesecret::default_options:
+  site:
+    host: 'localhost:7143'
+    domain: "%{facts.networking.domain}"
+    ssl: false
+    secret: 'CHANGEME'
+  redis:
+    uri: '''redis://user:CHANGEME@127.0.0.1:7179/0?timeout=10&thread_safe=false&logging=false'''
+    config: "%{lookup('onetimesecret::redis_config_file')}"
+  emailer:
+    mode: ':smtp'
+    from: "ots@%{facts.networking.domain}"
+    host: 'localhost'
+    port: 25
+  incoming:
+    enabled: false
+    email: 'example@onetimesecret.com'
+    passphrase: 'CHANGEME'
+    regex: '\A[a-zA-Z0-9]{6}\z'
+  locales:
+    - 'en'
+    - 'es'
+    - 'de'
+    - 'nl'
+    - 'ru'
+  unsupported_locales:
+    - 'fr'
+    - 'pt'
+    - 'jp'
+    - 'pt'
+  stathat:
+    enabled: false
+    apikey: 'CHANGEME'
+    default_chart: 'CHANGEME'
+  text:
+    nonpaid_recipient_text: '''You need to create an account!'''
+    paid_recipient_text: '''Send the secret link via email'''
+  limits:
+    create_secret: 250
+    create_account: 10
+    update_account: 10
+    email_recipient: 50
+    send_feedback: 10
+    authenticate_session: 5
+    homepage: 500
+    dashboard: 1000
+    failed_passphrase: 5
+    show_metadata: 1000
+    show_secret: 1000
+    burn_secret: 1000
+onetimesecret::domain: "%{facts.networking.domain}"
+onetimesecret::download_url: 'https://github.com/onetimesecret/onetimesecret/archive'
+onetimesecret::group: 'ots'
+onetimesecret::http_port: 7143
+onetimesecret::host: "%{facts.networking.host}"
+onetimesecret::install_dir: '/opt'
+onetimesecret::log_dir: '/var/log/onetime'
+onetimesecret::log_file: "%{lookup('onetimesecret::log_dir')}/ots.log"
+onetimesecret::manage_additional_packages: true
+onetimesecret::manage_config: true
+onetimesecret::manage_cron: true
+onetimesecret::manage_package: true
+onetimesecret::manage_service: true
+onetimesecret::manage_service_file: true
+onetimesecret::manage_symlink: true
+onetimesecret::manage_user: true
+onetimesecret::options: {}
+onetimesecret::package_name: "%{module_name}"
+onetimesecret::pid_dir: '/var/run/onetime'
+onetimesecret::pid_file: "%{lookup('onetimesecret::pid_dir')}/ots.pid"
+onetimesecret::redis_config_file: "%{lookup('onetimesecret::config_dir')}/redis.conf"
+onetimesecret::redis_config_template: "%{module_name}/redis.conf.erb"
+onetimesecret::redis_default_options:
+  pidfile: "%{lookup('onetimesecret::redis_pid_file')}"
+  logfile: "%{lookup('onetimesecret::redis_log_file')}"
+  dir: "%{lookup('onetimesecret::data_dir')}"
+  dbfilename: 'default.rdb'
+  appendfilename: 'default.aof'
+  requirepass: 'CHANGEME'
+  bind: '127.0.0.1'
+  port: 7179
+  databases: 16
+  timeout: 30
+  daemonize: 'yes'
+  loglevel: 'notice'
+  save: '157680000 1'
+  rdbcompression: 'yes'
+  appendonly: 'yes'
+  appendfsync: 'everysec'
+onetimesecret::redis_exec: '/usr/bin/redis-server'
+onetimesecret::redis_log_file: "%{lookup('onetimesecret::log_dir')}/redis.log"
+onetimesecret::redis_options: {}
+onetimesecret::redis_pid_file: "%{lookup('onetimesecret::pid_dir')}/redis.pid"
+onetimesecret::root_group: 'root'
+onetimesecret::service_enable: true
+onetimesecret::service_ensure: 'running'
+onetimesecret::service_name: "%{module_name}"
+onetimesecret::service_provider: ~
+onetimesecret::symlink_name: "%{lookup('onetimesecret::install_dir')}/%{module_name}"
+onetimesecret::use_default_options: true
+onetimesecret::user: 'ots'
+onetimesecret::version: 'master'
