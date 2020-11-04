@@ -21,7 +21,6 @@ class onetimesecret (
   Boolean $manage_config,
   Boolean $manage_package,
   Boolean $manage_service,
-  Boolean $manage_service_file,
   Boolean $manage_symlink,
   Boolean $manage_user,
   Hash $options,
@@ -37,8 +36,10 @@ class onetimesecret (
   String $root_group,
   String $secret,
   String $service_ensure,
+  Stdlib::Compat::Absolute_path $service_file,
   String $service_name,
   String $service_provider,
+  String $service_template,
   String $symlink_name,
   Boolean $use_default_options,
   String $user,
@@ -49,10 +50,10 @@ class onetimesecret (
 
   include stdlib
 
-  contain ::onetimesecret::user
-  contain ::onetimesecret::install
-  contain ::onetimesecret::config
-  contain ::onetimesecret::service
-  Class['::onetimesecret::user'] -> Class['::onetimesecret::install'] -> Class['::onetimesecret::config']
-  ~> Class['::onetimesecret::service']
+  contain onetimesecret::user
+  contain onetimesecret::install
+  contain onetimesecret::config
+  contain onetimesecret::service
+  Class['onetimesecret::user'] -> Class['onetimesecret::install'] -> Class['onetimesecret::config']
+  ~> Class['onetimesecret::service']
 }

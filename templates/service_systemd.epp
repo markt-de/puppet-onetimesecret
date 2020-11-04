@@ -1,0 +1,19 @@
+[Unit]
+Description=One-Time Secret backend
+After=network.target
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=<%= $onetimesecret::user %>
+Group=<%= $onetimesecret::group %>
+Type=forking
+WorkingDirectory=<%= $onetimesecret::config_dir %>
+ExecStart=<%= $onetimesecret::bundle_exec %> exec thin -e dev -R config.ru -p <%= $onetimesecret::http_port %> -P <%= $onetimesecret::pid_file %> -l <%= $onetimesecret::log_file %> -d start
+TimeoutStopSec=10
+PIDFile=<%= $onetimesecret::pid_file %>
+RemainAfterExit=no
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

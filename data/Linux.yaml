@@ -1,2 +1,3 @@
 ---
+onetimesecret::service_file: "/etc/systemd/system/%{lookup('onetimesecret::service_name')}.service"
 onetimesecret::service_provider: 'systemd'

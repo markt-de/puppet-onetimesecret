@@ -68,7 +68,6 @@ onetimesecret::manage_config: true
 onetimesecret::manage_cron: true
 onetimesecret::manage_package: true
 onetimesecret::manage_service: true
-onetimesecret::manage_service_file: true
 onetimesecret::manage_symlink: true
 onetimesecret::manage_user: true
 onetimesecret::options: {}
@@ -103,6 +102,7 @@ onetimesecret::service_enable: true
 onetimesecret::service_ensure: 'running'
 onetimesecret::service_name: "%{module_name}"
 onetimesecret::service_provider: ~
+onetimesecret::service_template: "%{module_name}/service_%{lookup('onetimesecret::service_provider')}.epp"
 onetimesecret::symlink_name: "%{lookup('onetimesecret::install_dir')}/%{module_name}"
 onetimesecret::use_default_options: true
 onetimesecret::user: 'ots'

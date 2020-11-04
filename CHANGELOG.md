@@ -7,12 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
+* Use systemd to manage the service on Linux
 
 ### Changed
 * Convert to PDK 1.18.1
 * Convert `params.pp` to module data
 
 ### Fixed
+
+### Removed
+* Remove obsolete Linux init script
+* Remove parameter `$manage_service_file`
 
 ## 1.0.2
 

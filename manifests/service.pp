@@ -3,22 +3,26 @@
 # Service
 #
 class onetimesecret::service {
-  if $onetimesecret::manage_service_file == true {
-    if $onetimesecret::service_provider == 'init'  {
-      file {"/etc/init.d/${onetimesecret::service_name}":
-        ensure  => present,
-        content => template("${module_name}/init.${::osfamily}.erb"),
-        mode    => '0755',
-        before  => Service[$onetimesecret::service_name],
-        notify  => Service[$onetimesecret::service_name]
-      }
+  if $onetimesecret::manage_service == true {
+    # Install service file.
+    file { $onetimesecret::service_file:
+      ensure  => file,
+      owner   => 'root',
+      group   => 0,
+      mode    => '0644',
+      content => epp($onetimesecret::service_template),
     }
-  }
 
-  service { $onetimesecret::service_name:
-    ensure     => $onetimesecret::service_ensure,
-    hasstatus  => true,
-    hasrestart => true,
-    enable     => true,
+    # Enable service.
+    service { $onetimesecret::service_name:
+      ensure    => $onetimesecret::service_ensure,
+      enable    => $onetimesecret::service_enable,
+      subscribe => [
+        Class['onetimesecret::install'],
+      ],
+      require   => [
+        File[$onetimesecret::service_file],
+      ],
+    }
   }
 }
