@@ -66,7 +66,6 @@ onetimesecret::log_file: "%{lookup('onetimesecret::log_dir')}/ots.log"
 onetimesecret::manage_additional_packages: true
 onetimesecret::manage_config: true
 onetimesecret::manage_cron: true
-onetimesecret::manage_package: true
 onetimesecret::manage_redis: true
 onetimesecret::manage_service: true
 onetimesecret::manage_symlink: true

@@ -21,7 +21,6 @@ class onetimesecret (
   String $log_file,
   Boolean $manage_additional_packages,
   Boolean $manage_config,
-  Boolean $manage_package,
   Boolean $manage_redis,
   Boolean $manage_service,
   Boolean $manage_symlink,
