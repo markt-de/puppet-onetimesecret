@@ -14,6 +14,7 @@ TimeoutStopSec=10
 PIDFile=<%= $onetimesecret::pid_file %>
 RemainAfterExit=no
 Restart=on-failure
+RestartSec=30
 
 [Install]
 WantedBy=multi-user.target

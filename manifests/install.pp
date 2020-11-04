@@ -20,6 +20,7 @@ class onetimesecret::install {
       ensure => 'installed',
       before => [
         Archive[$archive_target],
+        Exec["build ${module_name} version ${version} from source package"],
       ]
     }
 
@@ -72,7 +73,6 @@ class onetimesecret::install {
     ],
     require     => [
       Archive[$archive_target],
-      Package[$onetimesecret::additional_packages]
     ],
   }
 
