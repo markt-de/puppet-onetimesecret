@@ -12,23 +12,27 @@ class onetimesecret::install {
 
       # Install dependencies required to build OTS
       package { $onetimesecret::additional_packages:
-        ensure  => 'installed',
+        ensure => 'installed',
+        before => [
+          Archive[$archive_target],
+        ]
       }
 
       # Use foreman as process manager
-      package {'installforeman':
+      -> package { 'installforeman':
         ensure   => 'installed',
         name     => 'foreman',
         provider => 'gem',
-        require  => Package[$onetimesecret::additional_packages],
       }
 
     }
 
+    # Construct download URL.
     $version = $onetimesecret::version
     $filename = "${version}.tar.gz"
     $source_url = "${onetimesecret::download_url}/${filename}"
 
+    # Construct target paths and filenames.
     $archive_target = "${onetimesecret::install_dir}/${filename}"
     $install_target = "${onetimesecret::install_dir}/onetimesecret-${version}"
 
@@ -46,9 +50,6 @@ class onetimesecret::install {
       creates       => $install_target,
       extract       => true,
       cleanup       => false,
-      require       => [
-        Package[$onetimesecret::additional_packages],
-      ],
     }
 
     # Create required runtime directories.
@@ -65,7 +66,7 @@ class onetimesecret::install {
 
     # Build from source
     exec { "build ${module_name} version ${version} from source package":
-      cwd         => "${onetimesecret::install_dir}/onetimesecret-${version}",
+      cwd         => $install_target,
       command     => "${onetimesecret::bundle_exec} install --deployment --frozen --without=dev",
       path        => $onetimesecret::path,
       user        => 'root',

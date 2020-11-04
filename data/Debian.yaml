@@ -10,6 +10,5 @@ onetimesecret::additional_packages:
   - 'openssl'
   - 'ruby'
   - 'ruby-dev'
-  - 'unzip'
   - 'zlib1g'
   - 'zlib1g-dev'

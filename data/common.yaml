@@ -1,4 +1,5 @@
 ---
+onetimesecret::additional_packages: []
 onetimesecret::bundle_exec: '/usr/bin/bundle'
 onetimesecret::config_dir: '/etc/onetime'
 onetimesecret::config_file: "%{lookup('onetimesecret::config_dir')}/config"

@@ -1,0 +1,5 @@
+---
+lookup_options:
+  "^onetimesecret::.*":
+    merge:
+      strategy: deep

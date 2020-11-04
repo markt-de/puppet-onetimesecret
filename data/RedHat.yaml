@@ -8,4 +8,6 @@ onetimesecret::additional_packages:
   - 'make'
   - 'openssl-devel'
   - 'readline-devel'
+  - 'ruby-devel'
+  - 'rubygem-bundler'
   - 'zlib-devel'
