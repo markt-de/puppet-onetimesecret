@@ -59,7 +59,7 @@ onetimesecret::domain: "%{facts.networking.domain}"
 onetimesecret::download_url: 'https://github.com/onetimesecret/onetimesecret/archive'
 onetimesecret::group: 'ots'
 onetimesecret::http_port: 7143
-onetimesecret::host: "%{facts.networking.host}"
+onetimesecret::host: "%{facts.networking.fqdn}"
 onetimesecret::install_dir: '/opt'
 onetimesecret::log_dir: '/var/log/onetime'
 onetimesecret::log_file: "%{lookup('onetimesecret::log_dir')}/ots.log"

@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2020-11-05
+
+### Fixed
+* Fix empty `$host`, set default value to FQDN 
+
 ## [2.0.0] - 2020-11-05
 This release introduces several breaking changes. Redis is no longer
 maintained by this module, as a result, the Redis configuration is not
@@ -58,6 +63,7 @@ Afterwards change `$redis_options` to be compatible with your new Redis instance
 ## 1.0.0 - 2016-12-18
 * Initial release
 
-[Unreleased]: https://github.com/fraenki/puppet-onetimesecret/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/fraenki/puppet-onetimesecret/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/fraenki/puppet-onetimesecret/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/fraenki/puppet-onetimesecret/compare/v1.0.1...v2.0.0
 [1.0.1]: https://github.com/fraenki/puppet-onetimesecret/compare/v1.0.0...v1.0.1
