@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [2.0.0] - 2020-11-05
 This release introduces several breaking changes. Redis is no longer
 maintained by this module, as a result, the Redis configuration is not
 compatible with older releases. You should migrate your Redis instance
@@ -21,12 +21,13 @@ Afterwards change `$redis_options` to be compatible with your new Redis instance
 * Redis no longer runs under the same user as One-Time Secret
 * Re-add module voxpupuli/puppet-archive to download/extract the distribution archive
 * Repurpose `$redis_options` to work with voxpupuli/puppet-redis, add backwards-incompatible options
+* Update default values for `$additional_packages`
 * Change merge strategy for `$additional_packages` (now set to 'first')
 * Convert to PDK 1.18.1
 * Convert `params.pp` to module data
 * Migrate ERB templates to EPP
-
-### Fixed
+* Require Puppet 6
+* Update OS support
 
 ### Removed
 * Remove support for obsolete Linux init script
@@ -35,7 +36,7 @@ Afterwards change `$redis_options` to be compatible with your new Redis instance
 * Remove parameters `$manage_package` and `$package_name` (no packages available)
 * Remove parameter `$root_group` (using GID 0 is sufficient)
 
-## 1.0.2
+## 1.0.2 (unreleased)
 
 ### Changed
 * Remove undocumented dependency on voxpupuli/puppet-archive (replace with 'unzip' package). Make changes to install.pp to support installation of zip file.
@@ -43,7 +44,6 @@ Afterwards change `$redis_options` to be compatible with your new Redis instance
 * Change method of class ordering in init.pp
 * Change download URL and version to onetimesecret fork. This was necessary because the Gemfile/Gemfile.lock in the official versions referenced a broken version of the gem 'yajl-ruby'. See https://github.com/onetimesecret/onetimesecret/issues/81
 * Manifests linted in various places
-
 
 ### Fixed
 * Github download filename no longer gets prefixed with a 'v', so remove associated block from install.pp
@@ -58,5 +58,6 @@ Afterwards change `$redis_options` to be compatible with your new Redis instance
 ## 1.0.0 - 2016-12-18
 * Initial release
 
-[Unreleased]: https://github.com/fraenki/puppet-onetimesecret/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/fraenki/puppet-onetimesecret/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/fraenki/puppet-onetimesecret/compare/v1.0.1...v2.0.0
 [1.0.1]: https://github.com/fraenki/puppet-onetimesecret/compare/v1.0.0...v1.0.1
