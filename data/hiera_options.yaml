@@ -1,5 +1,9 @@
 ---
 lookup_options:
+  # REPLACE (not merge) package lists.
+  "^onetimesecret::additional_packages":
+    merge:
+      strategy: first
   "^onetimesecret::.*":
     merge:
       strategy: deep

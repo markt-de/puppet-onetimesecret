@@ -47,6 +47,7 @@ class onetimesecret::install {
     creates       => $install_target,
     extract       => true,
     cleanup       => true,
+    notify        => Class['onetimesecret::service'],
   }
 
   # Create required runtime directories.
@@ -110,9 +111,10 @@ class onetimesecret::install {
       target  => $install_target,
       owner   => $onetimesecret::user,
       group   => $onetimesecret::group,
+      notify  => Class['onetimesecret::service'],
       require => [
         Exec['chown onetimesecret source directory'],
-    ],
+      ],
     }
   }
 }

@@ -19,6 +19,7 @@ Afterwards change `$redis_options` to be compatible with your new Redis instance
 * Use module voxpupuli/puppet-redis to manage Redis
 * Re-add module voxpupuli/puppet-archive to download/extract distribution archive
 * Repurpose `$redis_options`, add incompatible options
+* Change merge strategy for `$additional_packages` (now set to 'first')
 * Convert to PDK 1.18.1
 * Convert `params.pp` to module data
 * Migrate ERB templates to EPP
