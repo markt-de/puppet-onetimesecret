@@ -1,12 +1,12 @@
 {
   "name": "fraenki-onetimesecret",
   "version": "2.0.0",
-  "author": "Frank Wall",
+  "author": "markt.de",
   "summary": "One-Time Secret web application",
   "license": "BSD-2-Clause",
-  "source": "git://github.com/fraenki/puppet-onetimesecret",
-  "project_page": "https://github.com/fraenki/puppet-onetimesecret",
-  "issues_url": "https://github.com/fraenki/puppet-onetimesecret/issues",
+  "source": "git://github.com/markt-de/puppet-onetimesecret",
+  "project_page": "https://github.com/markt-de/puppet-onetimesecret",
+  "issues_url": "https://github.com/markt-de/puppet-onetimesecret/issues",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
