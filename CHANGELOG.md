@@ -16,9 +16,11 @@ Afterwards change `$redis_options` to be compatible with your new Redis instance
 * Add new parameter `$manage_redis`
 
 ### Changed
+* Do not set a default value for `$version`
 * Use module voxpupuli/puppet-redis to manage Redis
-* Re-add module voxpupuli/puppet-archive to download/extract distribution archive
-* Repurpose `$redis_options`, add incompatible options
+* Redis no longer runs under the same user as One-Time Secret
+* Re-add module voxpupuli/puppet-archive to download/extract the distribution archive
+* Repurpose `$redis_options` to work with voxpupuli/puppet-redis, add backwards-incompatible options
 * Change merge strategy for `$additional_packages` (now set to 'first')
 * Convert to PDK 1.18.1
 * Convert `params.pp` to module data

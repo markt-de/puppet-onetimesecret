@@ -91,4 +91,3 @@ onetimesecret::service_template: "%{module_name}/service_%{lookup('onetimesecret
 onetimesecret::symlink_name: "%{lookup('onetimesecret::install_dir')}/%{module_name}"
 onetimesecret::use_default_options: true
 onetimesecret::user: 'ots'
-onetimesecret::version: 'master'
