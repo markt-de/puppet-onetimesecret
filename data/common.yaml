@@ -84,7 +84,6 @@ onetimesecret::redis_options:
   port: 7179
   save_db_to_disk: true
   timeout: 30
-onetimesecret::root_group: 'root'
 onetimesecret::service_enable: true
 onetimesecret::service_ensure: 'running'
 onetimesecret::service_name: "%{module_name}"

@@ -31,7 +31,6 @@ class onetimesecret (
   String $pid_file,
   Hash $redis_options,
   String $redis_password,
-  String $root_group,
   String $secret,
   Boolean $service_enable,
   String $service_ensure,

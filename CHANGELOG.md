@@ -30,6 +30,7 @@ Afterwards change `$redis_options` to be compatible with your new Redis instance
 * Remove parameter `$manage_service_file` (superseded by `$manage_service`)
 * Remove parameters `$redis_config_file`, `$redis_config_template`, `$redis_default_options`, `$redis_exec`, `$redis_pid_file`
 * Remove parameters `$manage_package` and `$package_name` (no packages available)
+* Remove parameter `$root_group` (using GID 0 is sufficient)
 
 ## 1.0.2
 
