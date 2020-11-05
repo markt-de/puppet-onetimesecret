@@ -1,7 +1,5 @@
-# == Class: onetimesecret::service
-#
-# Service
-#
+# @summary Setup the One-Time Secret system service
+# @api private
 class onetimesecret::service {
   if $onetimesecret::manage_service == true {
     # Install service file.

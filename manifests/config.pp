@@ -1,9 +1,6 @@
-# == Class onetimesecret::config
-#
-# Configuration
-#
+# @summary Manage the One-Time Secret configuration
+# @api private
 class onetimesecret::config {
-
   # Should we manage the configuration at all?
   if ( $onetimesecret::manage_config == true ) {
 

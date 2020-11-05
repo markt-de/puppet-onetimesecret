@@ -1,9 +1,6 @@
-# == Class: onetimesecret::user
-#
-# User creation
-#
+# @summary Create a user and group for One-Time Secret
+# @api private
 class onetimesecret::user {
-
   if $onetimesecret::manage_user {
 
     group { $onetimesecret::group:

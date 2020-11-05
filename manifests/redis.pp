@@ -1,5 +1,5 @@
-# == Class: onetimesecret::redis
-#
+# @summary Setup a Redis instance for use with One-Time Secret
+# @api private
 class onetimesecret::redis {
   if $onetimesecret::manage_redis == true {
     # Add password to redis options.

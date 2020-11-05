@@ -1,7 +1,5 @@
-# == Class: onetimesecret::install
-#
-# Installation
-#
+# @summary Install the One-Time Secret distribution archive
+# @api private
 class onetimesecret::install {
   # Construct download URL.
   $version = $onetimesecret::version
