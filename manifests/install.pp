@@ -12,14 +12,13 @@ class onetimesecret::install {
 
   # We won't be able to build the app without these packages.
   if ( $onetimesecret::manage_additional_packages == true ) {
-
     # Install dependencies required to build OTS
     package { $onetimesecret::additional_packages:
       ensure => 'installed',
       before => [
         Archive[$archive_target],
         Exec["build ${module_name} version ${version} from source package"],
-      ]
+      ],
     }
 
     # Use foreman as process manager
@@ -28,7 +27,6 @@ class onetimesecret::install {
       name     => 'foreman',
       provider => 'gem',
     }
-
   }
 
   # Download and extract the distribution archive.
@@ -50,8 +48,9 @@ class onetimesecret::install {
 
   # Create required runtime directories.
   file {
-    [ $onetimesecret::config_dir, $onetimesecret::data_dir,
-    $onetimesecret::log_dir, $onetimesecret::pid_dir ]:
+    [
+      $onetimesecret::config_dir, $onetimesecret::data_dir,
+    $onetimesecret::log_dir, $onetimesecret::pid_dir]:
       ensure => directory,
       owner  => $onetimesecret::user,
       group  => $onetimesecret::group,
