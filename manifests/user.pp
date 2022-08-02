@@ -2,7 +2,6 @@
 # @api private
 class onetimesecret::user {
   if $onetimesecret::manage_user {
-
     group { $onetimesecret::group:
       ensure => present,
       system => true,

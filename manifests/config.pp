@@ -3,10 +3,9 @@
 class onetimesecret::config {
   # Should we manage the configuration at all?
   if ( $onetimesecret::manage_config == true ) {
-
     # Replace password in redis URI
     $redis_uri = regsubst($onetimesecret::default_options['redis']['uri'],
-      'CHANGEME', $onetimesecret::redis_password)
+    'CHANGEME', $onetimesecret::redis_password)
 
     # Update web app defaults with real data
     $default_options_override = {
@@ -35,7 +34,7 @@ class onetimesecret::config {
       ensure  => file,
       mode    => $onetimesecret::config_mode,
       content => epp($onetimesecret::config_template,{
-        real_options => $real_options,
+          real_options => $real_options,
       }),
       owner   => $onetimesecret::user,
       group   => $onetimesecret::group,
