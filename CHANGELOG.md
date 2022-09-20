@@ -75,7 +75,8 @@ Afterwards change `$redis_options` to be compatible with your new Redis instance
 ## 1.0.0 - 2016-12-18
 * Initial release
 
-[Unreleased]: https://github.com/fraenki/puppet-onetimesecret/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/fraenki/puppet-onetimesecret/compare/v2.1.1...HEAD
+[2.1.1]: https://github.com/fraenki/puppet-onetimesecret/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/fraenki/puppet-onetimesecret/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/fraenki/puppet-onetimesecret/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/fraenki/puppet-onetimesecret/compare/v1.0.1...v2.0.0
