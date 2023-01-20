@@ -3,7 +3,7 @@
 class onetimesecret::redis {
   if $onetimesecret::manage_redis == true {
     # Add password to redis options.
-    $redis_params = deep_merge($onetimesecret::redis_options,{
+    $redis_params = deep_merge($onetimesecret::redis_options, {
         requirepass => $onetimesecret::redis_password
     })
 
