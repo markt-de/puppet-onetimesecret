@@ -111,7 +111,7 @@ onetimesecret::use_default_options: false
 onetimesecret::options:
   site:
     host: 'localhost:7143'
-    domain: %{::domain}
+    domain: %{facts.networking.domain}
     ssl: false
     secret: 'CHANGEME'
   redis:
@@ -119,7 +119,7 @@ onetimesecret::options:
     config: $redis_config_file
   emailer:
     mode: ':smtp'
-    from: "ots@%{::domain}"
+    from: "ots@%{facts.networking.domain}"
     host: 'localhost'
     port: 25
   incoming:

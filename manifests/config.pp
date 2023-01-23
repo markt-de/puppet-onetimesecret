@@ -33,7 +33,7 @@ class onetimesecret::config {
     file { $onetimesecret::config_file:
       ensure  => file,
       mode    => $onetimesecret::config_mode,
-      content => epp($onetimesecret::config_template,{
+      content => epp($onetimesecret::config_template, {
           real_options => $real_options,
       }),
       owner   => $onetimesecret::user,
