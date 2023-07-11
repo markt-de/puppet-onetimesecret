@@ -1,8 +1,8 @@
 #### puppet-onetimesecret
 
-[![Build Status](https://travis-ci.org/fraenki/puppet-onetimesecret.png?branch=master)](https://travis-ci.org/fraenki/puppet-onetimesecret)
-[![Puppet Forge](https://img.shields.io/puppetforge/v/fraenki/onetimesecret.svg)](https://forge.puppetlabs.com/fraenki/onetimesecret)
-[![Puppet Forge](https://img.shields.io/puppetforge/f/fraenki/onetimesecret.svg)](https://forge.puppetlabs.com/fraenki/onetimesecret)
+[![Build Status](https://github.com/markt-de/puppet-onetimesecret/actions/workflows/ci.yaml/badge.svg)](https://github.com/markt-de/puppet-onetimesecret/actions/workflows/ci.yaml)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/markt/onetimesecret.svg)](https://forge.puppetlabs.com/markt/onetimesecret)
+[![Puppet Forge](https://img.shields.io/puppetforge/f/markt/onetimesecret.svg)](https://forge.puppetlabs.com/markt/onetimesecret)
 
 1. [Overview](#overview)
 1. [Requirements](#requirements)
