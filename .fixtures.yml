@@ -4,6 +4,7 @@ fixtures:
     archive: "puppet/archive"
     redis: "puppet/redis"
     stdlib: "puppetlabs/stdlib"
+    systemd: "puppet/systemd"
   repositories:
     facts: "https://github.com/puppetlabs/puppetlabs-facts.git"
     provision: "https://github.com/puppetlabs/provision.git"

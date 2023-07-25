@@ -176,7 +176,7 @@ class onetimesecret (
   String $secret,
   Boolean $service_enable,
   String $service_ensure,
-  Stdlib::Compat::Absolute_path $service_file,
+  Stdlib::Absolutepath $service_file,
   String $service_name,
   String $service_provider,
   String $service_template,
