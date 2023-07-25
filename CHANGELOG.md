@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2023-07-25
+
+### Added
+* Add basic unit/acceptance tests
+* Enable GitHub Actions
+
+### Changed
+* Update module dependencies and OS support
+
+### Fixed
+* Fix compatibility with puppetlabs/stdlib v9.0.0
+
 ## [2.1.2] - 2023-07-11
 
 ### Changed
@@ -83,7 +95,8 @@ Afterwards change `$redis_options` to be compatible with your new Redis instance
 ## 1.0.0 - 2016-12-18
 * Initial release
 
-[Unreleased]: https://github.com/fraenki/puppet-onetimesecret/compare/v2.1.1...HEAD
+[Unreleased]: https://github.com/fraenki/puppet-onetimesecret/compare/v2.2.0...HEAD
+[2.2.0]: https://github.com/fraenki/puppet-onetimesecret/compare/v2.1.1...v2.2.0
 [2.1.1]: https://github.com/fraenki/puppet-onetimesecret/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/fraenki/puppet-onetimesecret/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/fraenki/puppet-onetimesecret/compare/v2.0.0...v2.0.1
