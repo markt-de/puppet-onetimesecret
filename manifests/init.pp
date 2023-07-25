@@ -1,16 +1,38 @@
 # @summary Setup the One-Time Secret web application
 #
+# @param additional_packages
+#   A list of optional packages that may be required, depending on the
+#   configuration.
+#
+# @param bundle_exec
+#   Path to the Ruby bundle executable.
+#
 # @param config_dir
 #   Path to the directory containing the One-Time Secret configuration files.
 #
 # @param config_file
 #   The main One-Time Secret configuration file (absolute path required).
 #
+# @param config_mode
+#   The permissions for the One-Time Secret configuration file.
+#
+# @param config_template
+#   The template used to create the One-Time Secret configuration file.
+#
 # @param data_dir
 #   Path to the directory containing the persistent One-Time Secret data.
 #
+# @param default_options
+#   A hash containing the default configuration options.
+#
 # @param domain
 #   The domain name that is used by One-Time Secret.
+#
+# @param download_url
+#   The base URL which will be used to download release files.
+#
+# @param gid
+#   The GID of the group.
 #
 # @param group
 #   Specifies the group under which the One-Time Secret service will run.
@@ -42,6 +64,9 @@
 #   Set to `false` to disable managing of the One-Time Secret configuration
 #   files.
 #
+# @param manage_redis
+#   Set to `false` to disable management of Redis.
+#
 # @param manage_service
 #   Set to `false` to disable service management.
 #
@@ -57,6 +82,10 @@
 #   Specifies a hash containing options to either overwrite some default values
 #   or to configure One-Time Secret from scratch. Will be merged with the
 #   `$default_options` hash (as long as `$use_default_options` is set to `true`).
+#
+# @param path
+#   The contents of the PATH environment variable, which will be used for `Exec`
+#   resources.
 #
 # @param pid_dir
 #   Specifies the directory for the One-Time Secret PID file.
@@ -83,12 +112,24 @@
 # @param service_ensure
 #   Specifies the desired state for the service.
 #
+# @param service_file
+#   The path to the service file.
+#
+# @param service_name
+#   The name of the service.
+#
+# @param service_template
+#   The template that will be used to create the service file.
+#
 # @param service_provider
 #   Specifies the service provider. Must be compatible with the operating system.
 #
 # @param symlink_name
 #   Controls the name of a version-independent symlink. It will always point
 #   to the release specified by `$version`.
+#
+# @param uid
+#   The UID of the user.
 #
 # @param use_default_options
 #   Set to `false` to completely disable loading of the default configuration.

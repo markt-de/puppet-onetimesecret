@@ -20,45 +20,132 @@
 
 ## Classes
 
-### `onetimesecret`
+### <a name="onetimesecret"></a>`onetimesecret`
 
 Setup the One-Time Secret web application
 
 #### Parameters
 
-The following parameters are available in the `onetimesecret` class.
+The following parameters are available in the `onetimesecret` class:
 
-##### `config_dir`
+* [`additional_packages`](#-onetimesecret--additional_packages)
+* [`bundle_exec`](#-onetimesecret--bundle_exec)
+* [`config_dir`](#-onetimesecret--config_dir)
+* [`config_file`](#-onetimesecret--config_file)
+* [`config_mode`](#-onetimesecret--config_mode)
+* [`config_template`](#-onetimesecret--config_template)
+* [`data_dir`](#-onetimesecret--data_dir)
+* [`default_options`](#-onetimesecret--default_options)
+* [`domain`](#-onetimesecret--domain)
+* [`download_url`](#-onetimesecret--download_url)
+* [`gid`](#-onetimesecret--gid)
+* [`group`](#-onetimesecret--group)
+* [`http_port`](#-onetimesecret--http_port)
+* [`host`](#-onetimesecret--host)
+* [`install_dir`](#-onetimesecret--install_dir)
+* [`log_dir`](#-onetimesecret--log_dir)
+* [`log_file`](#-onetimesecret--log_file)
+* [`manage_additional_packages`](#-onetimesecret--manage_additional_packages)
+* [`manage_config`](#-onetimesecret--manage_config)
+* [`manage_redis`](#-onetimesecret--manage_redis)
+* [`manage_service`](#-onetimesecret--manage_service)
+* [`manage_symlink`](#-onetimesecret--manage_symlink)
+* [`manage_user`](#-onetimesecret--manage_user)
+* [`options`](#-onetimesecret--options)
+* [`path`](#-onetimesecret--path)
+* [`pid_dir`](#-onetimesecret--pid_dir)
+* [`pid_file`](#-onetimesecret--pid_file)
+* [`redis_password`](#-onetimesecret--redis_password)
+* [`redis_options`](#-onetimesecret--redis_options)
+* [`secret`](#-onetimesecret--secret)
+* [`service_enable`](#-onetimesecret--service_enable)
+* [`service_ensure`](#-onetimesecret--service_ensure)
+* [`service_file`](#-onetimesecret--service_file)
+* [`service_name`](#-onetimesecret--service_name)
+* [`service_template`](#-onetimesecret--service_template)
+* [`service_provider`](#-onetimesecret--service_provider)
+* [`symlink_name`](#-onetimesecret--symlink_name)
+* [`uid`](#-onetimesecret--uid)
+* [`use_default_options`](#-onetimesecret--use_default_options)
+* [`user`](#-onetimesecret--user)
+* [`version`](#-onetimesecret--version)
+
+##### <a name="-onetimesecret--additional_packages"></a>`additional_packages`
+
+Data type: `Array`
+
+A list of optional packages that may be required, depending on the
+configuration.
+
+##### <a name="-onetimesecret--bundle_exec"></a>`bundle_exec`
+
+Data type: `String`
+
+Path to the Ruby bundle executable.
+
+##### <a name="-onetimesecret--config_dir"></a>`config_dir`
 
 Data type: `String`
 
 Path to the directory containing the One-Time Secret configuration files.
 
-##### `config_file`
+##### <a name="-onetimesecret--config_file"></a>`config_file`
 
 Data type: `String`
 
 The main One-Time Secret configuration file (absolute path required).
 
-##### `data_dir`
+##### <a name="-onetimesecret--config_mode"></a>`config_mode`
+
+Data type: `String`
+
+The permissions for the One-Time Secret configuration file.
+
+##### <a name="-onetimesecret--config_template"></a>`config_template`
+
+Data type: `String`
+
+The template used to create the One-Time Secret configuration file.
+
+##### <a name="-onetimesecret--data_dir"></a>`data_dir`
 
 Data type: `String`
 
 Path to the directory containing the persistent One-Time Secret data.
 
-##### `domain`
+##### <a name="-onetimesecret--default_options"></a>`default_options`
+
+Data type: `Hash`
+
+A hash containing the default configuration options.
+
+##### <a name="-onetimesecret--domain"></a>`domain`
 
 Data type: `String`
 
 The domain name that is used by One-Time Secret.
 
-##### `group`
+##### <a name="-onetimesecret--download_url"></a>`download_url`
+
+Data type: `String`
+
+The base URL which will be used to download release files.
+
+##### <a name="-onetimesecret--gid"></a>`gid`
+
+Data type: `Optional[Integer]`
+
+The GID of the group.
+
+Default value: `undef`
+
+##### <a name="-onetimesecret--group"></a>`group`
 
 Data type: `String`
 
 Specifies the group under which the One-Time Secret service will run.
 
-##### `http_port`
+##### <a name="-onetimesecret--http_port"></a>`http_port`
 
 Data type: `Integer`
 
@@ -66,53 +153,59 @@ The HTTP port of the One-Time Secrets web server. Note that this defaults
 to a non-standard port because you are expected to use a reverse proxy in
 front of the One-Time Secret web application.
 
-##### `host`
+##### <a name="-onetimesecret--host"></a>`host`
 
 Data type: `String`
 
 The hostname that is used when One-Time Secret generates URLs (web/mail).
 Usually the FQDN which is served by a reverse proxy.
 
-##### `install_dir`
+##### <a name="-onetimesecret--install_dir"></a>`install_dir`
 
 Data type: `String`
 
 Base directory for the installation. A sub-directory for every version will
 automatically be created. Old versions will not be removed.
 
-##### `log_dir`
+##### <a name="-onetimesecret--log_dir"></a>`log_dir`
 
 Data type: `String`
 
 Directory for One-Time Secret log files.
 
-##### `log_file`
+##### <a name="-onetimesecret--log_file"></a>`log_file`
 
 Data type: `String`
 
 The main One-Time Secret log file (absolute path required).
 
-##### `manage_additional_packages`
+##### <a name="-onetimesecret--manage_additional_packages"></a>`manage_additional_packages`
 
 Data type: `Boolean`
 
 Set to `false` to disable the installation of dependencies which are
 required to build and run One-Time Secret.
 
-##### `manage_config`
+##### <a name="-onetimesecret--manage_config"></a>`manage_config`
 
 Data type: `Boolean`
 
 Set to `false` to disable managing of the One-Time Secret configuration
 files.
 
-##### `manage_service`
+##### <a name="-onetimesecret--manage_redis"></a>`manage_redis`
+
+Data type: `Boolean`
+
+Set to `false` to disable management of Redis.
+
+##### <a name="-onetimesecret--manage_service"></a>`manage_service`
 
 Data type: `Boolean`
 
 Set to `false` to disable service management.
 
-##### `manage_symlink`
+##### <a name="-onetimesecret--manage_symlink"></a>`manage_symlink`
 
 Data type: `Boolean`
 
@@ -120,13 +213,13 @@ Set to `false` to disable the creation/update of a symlink to the current
 version. Note that the symlink is required when using the default
 configuration.
 
-##### `manage_user`
+##### <a name="-onetimesecret--manage_user"></a>`manage_user`
 
 Data type: `Boolean`
 
 Set to `false` to disable the creation of a user and group for One-Time Secret.
 
-##### `options`
+##### <a name="-onetimesecret--options"></a>`options`
 
 Data type: `Hash`
 
@@ -134,33 +227,40 @@ Specifies a hash containing options to either overwrite some default values
 or to configure One-Time Secret from scratch. Will be merged with the
 `$default_options` hash (as long as `$use_default_options` is set to `true`).
 
-##### `pid_dir`
+##### <a name="-onetimesecret--path"></a>`path`
+
+Data type: `String`
+
+The contents of the PATH environment variable, which will be used for `Exec`
+resources.
+
+##### <a name="-onetimesecret--pid_dir"></a>`pid_dir`
 
 Data type: `String`
 
 Specifies the directory for the One-Time Secret PID file.
 
-##### `pid_file`
+##### <a name="-onetimesecret--pid_file"></a>`pid_file`
 
 Data type: `String`
 
 The PID file for the main One-Time Secret web service (absolute path required).
 
-##### `redis_password`
+##### <a name="-onetimesecret--redis_password"></a>`redis_password`
 
 Data type: `String`
 
 A password for connections to the Redis server. It will also be used when
 setting up a new Redis instance for One-Time Secret.
 
-##### `redis_options`
+##### <a name="-onetimesecret--redis_options"></a>`redis_options`
 
 Data type: `Hash`
 
 Specifies a hash containing options to overwrite some default values
 for the Redis service (as long as `$manage_redis` is set to `true`).
 
-##### `secret`
+##### <a name="-onetimesecret--secret"></a>`secret`
 
 Data type: `String`
 
@@ -168,45 +268,71 @@ A global secret is included in the encryption key so it needs to be
 long and secure. NOTE: Once the `secret` is set, do not change it
 (keep a backup offsite).
 
-##### `service_enable`
+##### <a name="-onetimesecret--service_enable"></a>`service_enable`
 
 Data type: `Boolean`
 
 Specifies whether the service should be enabled.
 
-##### `service_ensure`
+##### <a name="-onetimesecret--service_ensure"></a>`service_ensure`
 
 Data type: `String`
 
 Specifies the desired state for the service.
 
-##### `service_provider`
+##### <a name="-onetimesecret--service_file"></a>`service_file`
+
+Data type: `Stdlib::Compat::Absolute_path`
+
+The path to the service file.
+
+##### <a name="-onetimesecret--service_name"></a>`service_name`
+
+Data type: `String`
+
+The name of the service.
+
+##### <a name="-onetimesecret--service_template"></a>`service_template`
+
+Data type: `String`
+
+The template that will be used to create the service file.
+
+##### <a name="-onetimesecret--service_provider"></a>`service_provider`
 
 Data type: `String`
 
 Specifies the service provider. Must be compatible with the operating system.
 
-##### `symlink_name`
+##### <a name="-onetimesecret--symlink_name"></a>`symlink_name`
 
 Data type: `String`
 
 Controls the name of a version-independent symlink. It will always point
 to the release specified by `$version`.
 
-##### `use_default_options`
+##### <a name="-onetimesecret--uid"></a>`uid`
+
+Data type: `Optional[Integer]`
+
+The UID of the user.
+
+Default value: `undef`
+
+##### <a name="-onetimesecret--use_default_options"></a>`use_default_options`
 
 Data type: `Boolean`
 
 Set to `false` to completely disable loading of the default configuration.
 In this case you are required to provide a fully working configuration.
 
-##### `user`
+##### <a name="-onetimesecret--user"></a>`user`
 
 Data type: `String`
 
 Specifies the user under which the One-Time Secret service will run.
 
-##### `version`
+##### <a name="-onetimesecret--version"></a>`version`
 
 Data type: `String`
 
@@ -214,86 +340,4 @@ The version of One-Time Secret thats should be installed. Supports
 several different values: a release tag (v0.9.2), a branch name (master)
 or a commit ID. Have a look at the One-Time Secret GitHub page for
 possible values.
-
-##### `additional_packages`
-
-Data type: `Array`
-
-
-
-##### `bundle_exec`
-
-Data type: `String`
-
-
-
-##### `config_mode`
-
-Data type: `String`
-
-
-
-##### `config_template`
-
-Data type: `String`
-
-
-
-##### `default_options`
-
-Data type: `Hash`
-
-
-
-##### `download_url`
-
-Data type: `String`
-
-
-
-##### `manage_redis`
-
-Data type: `Boolean`
-
-
-
-##### `path`
-
-Data type: `String`
-
-
-
-##### `service_file`
-
-Data type: `Stdlib::Compat::Absolute_path`
-
-
-
-##### `service_name`
-
-Data type: `String`
-
-
-
-##### `service_template`
-
-Data type: `String`
-
-
-
-##### `gid`
-
-Data type: `Optional[Integer]`
-
-
-
-Default value: ``undef``
-
-##### `uid`
-
-Data type: `Optional[Integer]`
-
-
-
-Default value: ``undef``
 
