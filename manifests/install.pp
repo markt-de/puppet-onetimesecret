@@ -7,8 +7,14 @@ class onetimesecret::install {
   $source_url = "${onetimesecret::download_url}/${filename}"
 
   # Construct target paths and filenames.
-  $archive_target = "${onetimesecret::install_dir}/${filename}"
-  $install_target = "${onetimesecret::install_dir}/onetimesecret-${version}"
+  $archive_target = $version ? {
+    /^v(\d+\..*)$/ => "${onetimesecret::install_dir}/onetimesecret-${1}.tar.gz",
+    default        => "${onetimesecret::install_dir}/onetimesecret-${filename}",
+  }
+  $install_target = $version ? {
+    /^v(\d+\..*)$/ => "${onetimesecret::install_dir}/onetimesecret-${1}",
+    default        => "${onetimesecret::install_dir}/onetimesecret-${version}",
+  }
 
   # We won't be able to build the app without these packages.
   if ( $onetimesecret::manage_additional_packages == true ) {
