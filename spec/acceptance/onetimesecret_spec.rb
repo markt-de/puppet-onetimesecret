@@ -2,7 +2,7 @@ require 'spec_helper_acceptance'
 
 describe 'onetimesecret' do
   let(:onetimesecret_password) { 'SomeHardToGuessRandomCharacters' }
-  let(:onetimesecret_version) { 'v0.12.0' }
+  let(:onetimesecret_version) { 'v0.12.1' }
   let(:redis_password) { 'AnotherGoodPassword' }
 
   context 'with default parameters' do
