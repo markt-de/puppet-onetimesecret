@@ -8,7 +8,7 @@ Wants=network-online.target
 User=<%= $onetimesecret::user %>
 Group=<%= $onetimesecret::group %>
 Type=forking
-WorkingDirectory=<%= "${onetimesecret::install_dir}/onetimesecret-${onetimesecret::version}" %>
+WorkingDirectory=<%= $working_dir %>
 ExecStart=<%= $onetimesecret::bundle_exec %> exec thin -e dev -R config.ru -p <%= $onetimesecret::http_port %> -P <%= $onetimesecret::pid_file %> -l <%= $onetimesecret::log_file %> -d start
 TimeoutStopSec=10
 PIDFile=<%= $onetimesecret::pid_file %>
