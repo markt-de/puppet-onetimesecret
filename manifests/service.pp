@@ -13,8 +13,8 @@ class onetimesecret::service {
       owner   => 'root',
       group   => 0,
       mode    => '0644',
-      content => epp($onetimesecret::service_template,{
-        working_dir => $working_dir,
+      content => epp($onetimesecret::service_template, {
+          working_dir => $working_dir,
       }),
     }
 
