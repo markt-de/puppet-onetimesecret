@@ -15,7 +15,7 @@ describe 'onetimesecret' do
       let(:facts) { facts }
 
       context 'with default parameters' do
-        let :params do
+        let(:params) do
           {
             redis_password: REDIS_PASSWORD.to_s,
             secret: ONETIMESECRET_PASSWORD.to_s,
@@ -28,7 +28,7 @@ describe 'onetimesecret' do
       end
 
       context 'when setting version to a commit hash' do
-        let :params do
+        let(:params) do
           {
             redis_password: REDIS_PASSWORD.to_s,
             secret: ONETIMESECRET_PASSWORD.to_s,
