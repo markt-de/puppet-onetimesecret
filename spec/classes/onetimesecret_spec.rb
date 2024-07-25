@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 ONETIMESECRET_PASSWORD = 'SomeHardToGuessRandomCharacters'.freeze
-ONETIMESECRET_VERSION = '0.13.0-RC7'.freeze
+ONETIMESECRET_VERSION = '0.16.0'.freeze
 ONETIMESECRET_VERSION_TAG = "v#{ONETIMESECRET_VERSION}".freeze
 ONETIMESECRET_VERSION_HASH = 'a46fdeb2274bb528516505cec8ffb3568dd47c1c'.freeze
 REDIS_PASSWORD = 'AnotherGoodPassword'.freeze

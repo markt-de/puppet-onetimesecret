@@ -13,7 +13,7 @@ RSpec.configure do |c|
     if os[:family].match?(%r{redhat}i)
       LitmusHelper.instance.run_shell('dnf -y install dnf-plugins-core')
       LitmusHelper.instance.run_shell('dnf config-manager --set-enabled powertools')
-      LitmusHelper.instance.run_shell('dnf -y module switch-to ruby:3.0')
+      LitmusHelper.instance.run_shell('dnf -y module switch-to ruby:3.1')
     end
   end
 end
